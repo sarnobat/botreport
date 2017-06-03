@@ -81,16 +81,18 @@ public class ReportBotsExceedingEstimates {
 						System.err.println("Bad data, start cannot be after end. Skipping: " + line);
 						continue;
 					}
-					BotSize botType = BotSize.valueOf(matcher.group(5)
-							.toUpperCase());
-					long expectedMillisecondsTaken = getEstimatedMilliseconds()
-							.get(botType);
+					BotSize botType = BotSize.valueOf(matcher.group(5).toUpperCase());
+					long expectedMillisecondsTaken = getEstimatedMilliseconds().get(botType);
 					String outcome;
 					if (millisecondsTaken > expectedMillisecondsTaken) {
 						outcome = "Yes"; // above average
 					} else {
 						outcome = "No";
 					}
+					
+					//
+					// Step 3) Print the result for this line
+					//
 					System.out.println(line + " - " + outcome);
 				} else {
 					System.err.println("Problem parsing line, skipping: " + line);
