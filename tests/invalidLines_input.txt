@@ -1,0 +1,7 @@
+1 - 11/1/2016:12:00 - 11/1/2016:13:01 google.com Medium
+foobar - 11/2/2016:12:00 - 11/2/2016:14:21 itunes.com small
+3 - foobar - 05/5/2017:17:21 apple.com Large
+4 - 11/2/2016:14:00 - foobar google.com small
+5 - 05/4/2017:15:00 - 05/4/2017:15:01 foobar Large
+6 - 11/5/2016:11:59 - 11/6/2016:02:21 itunes.com foobar
+7 - 12/31/2016:23:59 - 01/1/2017:00:00 amazon.com Ultimate
