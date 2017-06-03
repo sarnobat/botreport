@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 public class ReportBotsExceedingEstimates {
 	
 	public static void main(String[] args) {
-		File file = new File(args.length > 0 ? args[0] : "transactions.txt");
+		File file = new File(args.length > 0 ? args[0] : "input.txt");
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(file));
