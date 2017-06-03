@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  * 	 	start time: 	11/1/2016:12:00
  *		end time:		11/1/2016:13:01
  * 		site:			google.com
- *  	bot:			MEDIUM
+ * 		bot:			MEDIUM
  *
  * Since this is a MEDIUM-sized bot, it should have completed in 1 hour or less. 
  * Looking at its start and end time, we can see that it took 1 hour and 1 minute.
@@ -50,42 +50,44 @@ public class ReportBotsExceedingEstimates {
 						Pattern.CASE_INSENSITIVE).matcher(line);
 
 				if (matcher.find()) {
-					
+
 					//
 					// Calculate how much time each task took
 					//
 					String startTime = matcher.group(2);
-				    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY:HH:mm");
-				    long startDate ;
-				    try {
+					SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY:HH:mm");
+					long startDate;
+					try {
 						startDate = dateFormat.parse(startTime).getTime();
 					} catch (ParseException e) {
 						System.err.println("Unexpected date format: " + startTime);
 						continue;
 					}
-				    
-				    String endTime = matcher.group(3);
-				    long endDate ;
-				    try {
-				    	endDate = dateFormat.parse(endTime).getTime();
+
+					String endTime = matcher.group(3);
+					long endDate;
+					try {
+						endDate = dateFormat.parse(endTime).getTime();
 					} catch (ParseException e) {
 						System.err.println("Unexpected date format: " + endTime);
 						continue;
 					}
-				    
+
 					//
 					// Step 2) Check if this bot is performing as expected
 					//
-				    long millisecondsTaken = endDate - startDate;
-					BotSize botType = BotSize.valueOf(matcher.group(5).toUpperCase());
-				    long expectedMillisecondsTaken = getEstimatedMilliseconds().get(botType);
-				    String outcome;
-				    if (millisecondsTaken > expectedMillisecondsTaken) {
-				    	outcome = "Yes"; // above average
-				    } else {
-				    	outcome = "No"; 
-				    }
-				    System.out.println(line + " - " + outcome);
+					long millisecondsTaken = endDate - startDate;
+					BotSize botType = BotSize.valueOf(matcher.group(5)
+							.toUpperCase());
+					long expectedMillisecondsTaken = getEstimatedMilliseconds()
+							.get(botType);
+					String outcome;
+					if (millisecondsTaken > expectedMillisecondsTaken) {
+						outcome = "Yes"; // above average
+					} else {
+						outcome = "No";
+					}
+					System.out.println(line + " - " + outcome);
 				} else {
 					System.err.println("Problem parsing line, skipping: " + line);
 					continue;
