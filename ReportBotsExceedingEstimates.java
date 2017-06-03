@@ -16,11 +16,11 @@ import java.util.regex.Pattern;
  * 
  * Example:
  * 
- * 	 	Transaction ID: 1
- * 	 	start time: 	11/1/2016:12:00
- *		end time:		11/1/2016:13:01
- * 		site:			google.com
- * 		bot:			MEDIUM
+ * 	 	Transaction ID:		1
+ * 	 	start time:			11/1/2016:12:00
+ *		end time:			11/1/2016:13:01
+ * 		site:				google.com
+ * 		bot:				MEDIUM
  *
  * Since this is a MEDIUM-sized bot, it should have completed in 1 hour or less. 
  * Looking at its start and end time, we can see that it took 1 hour and 1 minute.
@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 public class ReportBotsExceedingEstimates {
 	
 	public static void main(String[] args) {
-		File file = new File(args.length > 0 ? args[0] :"transactions.txt");
+		File file = new File(args.length > 0 ? args[0] : "transactions.txt");
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(file));
