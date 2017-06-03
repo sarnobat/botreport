@@ -55,7 +55,7 @@ public class ReportBotsExceedingEstimates {
 					// Calculate how much time each task took
 					//
 					String startTime = matcher.group(2);
-					SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY:HH:mm");
+					SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy:HH:mm");
 					long startDate;
 					try {
 						startDate = dateFormat.parse(startTime).getTime();
@@ -77,6 +77,10 @@ public class ReportBotsExceedingEstimates {
 					// Step 2) Check if this bot is performing as expected
 					//
 					long millisecondsTaken = endDate - startDate;
+					if (millisecondsTaken < 0) {
+						System.err.println("Bad data, start cannot be after end. Skipping: " + line);
+						continue;
+					}
 					BotSize botType = BotSize.valueOf(matcher.group(5)
 							.toUpperCase());
 					long expectedMillisecondsTaken = getEstimatedMilliseconds()
