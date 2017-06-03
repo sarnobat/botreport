@@ -6,7 +6,9 @@ To compile and run the program, simply execute:
 
 ## How it works
 
-The input is stored in a plain text file (rather than a database) for ease of running. This file gets read line-by-line and the time taken for each task is calculated by parsing the dates and performing basic arithmetic. More detailed steps are explained in the code comments.
+The input is stored in a plain text file (rather than a database) called `input.txt` for ease of running. This file gets read line-by-line and the time taken for each task is calculated by parsing the dates and performing basic arithmetic. More detailed steps are explained in the code comments.
+
+The output can be seen in `output.txt`.
 	
 ## Test Cases
 
